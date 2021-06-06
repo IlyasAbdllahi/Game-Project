@@ -13,5 +13,13 @@ Procedure :
         *_ display the battle area.
             ... and change the correct players icons
         *_ set up the winner/loser  lable 
-        *_ clear the active class for both players.
-        
+     *_ clear the active class for both players.
+    
+
+
+
+
+
+
+
+
