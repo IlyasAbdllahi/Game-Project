@@ -19,18 +19,37 @@ let player2;
 // 2. It does NOT do it immediately.
 // 3. At a later point of time, you CALL the function, i.e. you tell it to do the job
 
-const setPlayer1 = (data, data1, data2, data3)=>{
-    player1 = data
+const setPlayer1 = (state)=>{
+    player1 = state
 }
 
-setPlayer1('paper');
+const choosePlayer2Randomly = ()=>{
+    let states = ['rock','paper','scissors'];
+    let chooseIndex = Math.floor(Math.random()*3);
+    player2 = states[chooseIndex];
+}
 
+const processRound = (player1Choice)=>{
+    setPlayer1(player1Choice);
+    choosePlayer2Randomly();
+    console.log(player1+" "+player2);
+    selectWinner();
+}
 
-//have a function which only knows that it needs to set player1 to something. WHAT it needs to set player1 to is our choice.
+const selectWinner = ()=>{
+    if((player1=='rock'&&player2=='paper') || (player1=='scissors'&&player2=='rock') || (player1=='paper'&&player2=='scissors')){
+        console.log('player2 wins');
+    }
+    else if(player1==player2){
+        console.log('its a tie');
+    }
+    else{
+        console.log('player1 wins');
+    }
+}
 
-// 1. player1 is declared
-// 2. player2 is declared
-// 3. JS RECOGNISES that a function called setPlayer1ToRock exists.
-// 4. Tell JS to execute the code we have inside the function.
+document.getElementById("btn-rock").addEventListener('click', event => {processRound('rock')});
+document.querySelector("#btn-paper").addEventListener('click', event =>{processRound('paper')});
+document.querySelector("#btn-scissors").addEventListener('click', event =>{processRound('scissors')});
 
 // Scope
